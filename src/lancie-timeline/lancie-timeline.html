@@ -56,9 +56,9 @@
     <div class="layout vertical">
       <paper-card image="" elevation="1" animated-shadow="false">
         <div class="card-header">
-          <paper-tabs selected="{{selected}}">
-            <paper-tab>Friday</paper-tab>
-            <paper-tab>Saturday</paper-tab>
+          <paper-tabs id="tabs" selected="{{selected}}">
+            <paper-tab id="first">Friday</paper-tab>
+            <paper-tab id="second">Saturday</paper-tab>
             <paper-tab>Sunday</paper-tab>
           </paper-tabs>
         </div>
@@ -246,6 +246,14 @@
           type: Number,
           value: 0
         }
+      },
+
+      attached: function() {
+        // Change to callback/listener that fires after page is loaded
+        setTimeout(function() {
+          console.log("log");
+          this.$.tabs._tabChanged(this.$.first);
+        }.bind(this), 100);
       }
     });
   })();
